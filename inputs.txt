@@ -1,0 +1,10 @@
+1. Strike 
+ 2.Multi Strike 
+ 3.Red strike 
+ 4.Striker strike 
+ 5.Defunct coin 
+ 6.None 
+ Input Outcome are 
+3
+4
+2
