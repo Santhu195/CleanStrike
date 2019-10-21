@@ -1,7 +1,6 @@
 from random import randint
 from CleanBoard import CleanBoard
 from Player import Players
-from tabulate import tabulate
 import histories
 
 with open('inputs.txt', 'w') as f:
