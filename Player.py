@@ -1,6 +1,10 @@
 
 import histories
 
+
+FOUL_THRESHOLD = 3
+EMPTY_THRESHOLD = 3  
+
 class Players:
     """
     The Players class will consists of players score and their history of moves made during the game.
@@ -82,14 +86,14 @@ class Players:
         j = 0
 
         for i in moves:
-            if j > 3:
+            if j > EMPTY_THRESHOLD:
                 break
             if i['outcome'] == histories.EMPTY_STRIKE:
                 count = count + 1
 
             j = j + 1
 
-        if count >= 3:
+        if count >= EMPTY_THRESHOLD:
             self.updateplayerscore(player, -1)
 
     def playerfoulcount(self, player):
@@ -108,14 +112,14 @@ class Players:
         count = 0
         j = 0
         for i in moves:
-            if j > 3:
+            if j > FOUL_THRESHOLD:
                 break
             if i['outcome'] == histories.DEFUNCT_COIN or i['outcome'] == histories.STRIKER_STRIKE:
                 count = count + 1
 
             j = j + 1
 
-        if count >= 3:
+        if count >= FOUL_THRESHOLD:
             self.updateplayerscore(player, -1)
 
     def scoredifference(self):
