@@ -1,9 +1,5 @@
 
-import histories
-
-
-FOUL_THRESHOLD = 3
-EMPTY_THRESHOLD = 3  
+import outcomeConstants
 
 class Players:
     """
@@ -57,6 +53,7 @@ class Players:
         The following checks the score of a player and decalares the result.
 
         """
+        
         if self.player1score > self.player2score and self.player1score - self.player2score >= 3:
             return {"result": "Player1",
                     "player1score": self.player1score,
@@ -86,14 +83,14 @@ class Players:
         j = 0
 
         for i in moves:
-            if j > EMPTY_THRESHOLD:
+            if j > 3:
                 break
-            if i['outcome'] == histories.EMPTY_STRIKE:
+            if i['outcome'] == outcomeConstants.EMPTY_STRIKE:
                 count = count + 1
 
-            j = j + 1
+                j = j + 1
 
-        if count >= EMPTY_THRESHOLD:
+        if count >= 3:
             self.updateplayerscore(player, -1)
 
     def playerfoulcount(self, player):
@@ -112,14 +109,14 @@ class Players:
         count = 0
         j = 0
         for i in moves:
-            if j > FOUL_THRESHOLD:
+            if j > 3:
                 break
-            if i['outcome'] == histories.DEFUNCT_COIN or i['outcome'] == histories.STRIKER_STRIKE:
+            if i['outcome'] == outcomeConstants.DEFUNCT_COIN or i['outcome'] == outcomeConstants.STRIKER_STRIKE:
                 count = count + 1
 
             j = j + 1
 
-        if count >= FOUL_THRESHOLD:
+        if count >= 3:
             self.updateplayerscore(player, -1)
 
     def scoredifference(self):

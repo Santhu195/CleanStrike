@@ -28,11 +28,11 @@ class CleanBoard:
         The black coin and red coin is reset to 7 and 1 respectively.
 
         """
-        if self.black == 0:
+        if self.black == 0 or self.black<2:
             return 0
 
-        self.black = 7
-        self.red = 1
+      
+        self.black = self.black - 2
         return 2
 
     def redStrike(self):
